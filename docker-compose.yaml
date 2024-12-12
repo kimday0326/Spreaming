@@ -1,0 +1,21 @@
+services:
+  maindb:
+    image: mysql:latest
+    container_name: spreaming-maindb
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234!
+      MYSQL_DATABASE: maindb
+      MYSQL_CHARSET: utf8mb4
+      MYSQL_COLLATION: utf8mb4_unicode_ci
+      TZ: Asia/Seoul
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./db/conf.d:/etc/mysql/conf.d
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
+  redis:
+    image: redis:latest
+    container_name: spreaming-redis
+    ports:
+      - 6379:6379

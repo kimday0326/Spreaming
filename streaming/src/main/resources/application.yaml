@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: streaming
+  config:
+    import:
+      - cache.yaml
+  profiles:
+    active: local
+---
+spring.config.activate.on-profile: local
+

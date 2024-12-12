@@ -1,0 +1,6 @@
+
+project(':TranscodingService'){
+    dependencies {
+        compileOnly project(':ContentService')
+    }
+}

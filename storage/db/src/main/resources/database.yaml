@@ -1,0 +1,80 @@
+spring:
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.default_batch_fetch_size: 100
+
+---
+spring.config.activate.on-profile: local
+
+spring:
+  #  datasource:
+  #    url: jdbc :mysql://localhost:3306/maindb?serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
+  #    username: root
+  #    password: root1234!
+  #    hikari:
+  #      jdbc-url: jdbc :mysql://localhost:3306/maindb?serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8
+  #      pool-name: core-db-pool
+  #      data-source-properties:
+  #        rewriteBatchedStatements: true
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    show-sql: true
+    generate-ddl: true
+    defer-datasource-initialization: true
+#  sql:
+#    init:
+#      mode: always
+#      schema-locations: classpath:db/schema.sql
+#      data-locations: classpath:db/data.sql
+
+storage:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://localhost:3306/maindb?serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root1234!
+    pool-name: core-db-pool
+    data-source-properties:
+      rewriteBatchedStatements: true
+
+#jwt:
+#  secret-key: ${JWT_SECRET_KEY}
+#  access-expiry-seconds: ${ACCESS_EXPIRY_SECONDS}
+#  refresh-expiry-seconds: ${REFRESH_EXPIRY_SECONDS}
+
+---
+spring.config.activate.on-profile: dev
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    show-sql: true
+
+storage:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://localhost:3306/maindb?serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root1234!
+    pool-name: core-db-pool
+    data-source-properties:
+      rewriteBatchedStatements: true
+
+jwt:
+  secret-key: ${JWT_SECRET_KEY}
+  access-expiry-seconds: ${ACCESS_EXPIRY_SECONDS}
+  refresh-expiry-seconds: ${REFRESH_EXPIRY_SECONDS}
